@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class enemyController : MonoBehaviour {
     public int movementSpeed = 3;
@@ -18,10 +19,20 @@ public class enemyController : MonoBehaviour {
         if (hit.distance < 0.9f && moveX < 0) {
             moveX = 1;
             GetComponent<SpriteRenderer>().flipX = true;
+            if (hit.collider.tag == "Player") {
+                chomp();
+            }
         }
         else if (hit.distance < 0.9f && moveX > 0) {
             moveX = -1;
             GetComponent<SpriteRenderer>().flipX = false;
+            if (hit.collider.tag == "Player") {
+                chomp();
+            }
         }
+    }
+
+    void chomp() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

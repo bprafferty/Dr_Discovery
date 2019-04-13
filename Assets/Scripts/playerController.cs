@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour {
     public int movementSpeed = 10;
@@ -19,6 +20,9 @@ public class playerController : MonoBehaviour {
     void Update() {
         movePlayer();
         rayCast();
+        if (gameObject.transform.position.y < -7) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     void movePlayer() {

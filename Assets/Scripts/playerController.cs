@@ -57,6 +57,16 @@ public class playerController : MonoBehaviour {
         if (downward != null && downward.collider != null && downward.distance < distanceToPlayerFeet && downward.collider.tag != "Enemy") {
             isGrounded = true;
         }
+        if (downward != null && downward.collider != null && downward.distance < distanceToPlayerFeet && downward.collider.tag == "Enemy") {
+            GetComponent<Rigidbody2D>().AddForce(Vector2.up * 1000);
+            downward.collider.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 200);
+            downward.collider.gameObject.GetComponent<Rigidbody2D>().gravityScale = 15;
+            downward.collider.gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
+            downward.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            downward.collider.gameObject.GetComponent<enemyController>().enabled = false;
+            GetComponent<playerScore>().score += 100;
+        }
+
 
     }
 }

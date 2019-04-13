@@ -5,10 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class enemyController : MonoBehaviour {
-    public int movementSpeed = 3;
-    public int moveX = 1;
     public int lives = 3;
     public GameObject livesCanvas;
+    public int movementSpeed = 3;
+    public int moveX = 1;
+    public int currentLives;
 
     // Start is called before the first frame update
     void Start() {
@@ -38,6 +39,7 @@ public class enemyController : MonoBehaviour {
 
     void damage() {
         lives -= 1;
+
         if (lives == 0) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

@@ -28,7 +28,7 @@ public class playerScore : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D trigger) {
-        if (trigger.gameObject.name == "Finish") {
+        if (trigger.gameObject.tag == "Finish") {
             multiplyScore();
         }
     }

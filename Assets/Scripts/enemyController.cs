@@ -11,6 +11,7 @@ public class enemyController : MonoBehaviour {
     public int movementSpeed = 3;
     public int moveX = 1;
     public int currentLives;
+    private IEnumerator coroutine;
 
     // Start is called before the first frame update
     void Start() {
@@ -55,13 +56,18 @@ public class enemyController : MonoBehaviour {
     }
 
     IEnumerator damageCanvas() {
-        chompCanvas.GetComponent<Text>().enabled = true;
-        yield return StartCoroutine(turnOff(2.0f));
+        coroutine = turnOff(2.0f);
+
+        //chompCanvas.GetComponent<Text>().enabled = true;
+        yield return StartCoroutine(coroutine);
+        //yield return StartCoroutine(turnOff(2.0f));
     }
 
     IEnumerator turnOff(float waitTime) {
-        chompCanvas.GetComponent<Text>().enabled = false;
-        yield return 0;
+        while (true) {
+            yield return new WaitForSeconds(waitTime);
+            chompCanvas.GetComponent<Text>().enabled = true;
+        }
     }
 
 }

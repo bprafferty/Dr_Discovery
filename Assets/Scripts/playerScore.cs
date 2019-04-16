@@ -26,4 +26,14 @@ public class playerScore : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+
+    void OnTriggerEnter2D(Collider2D trigger) {
+        if (trigger.gameObject.name == "Finish") {
+            multiplyScore();
+        }
+    }
+
+    void multiplyScore() {
+        score = score + (int)(time * 10);
+    }
 }

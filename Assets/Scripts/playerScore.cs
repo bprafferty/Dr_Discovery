@@ -30,10 +30,23 @@ public class playerScore : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D trigger) {
         if (trigger.gameObject.tag == "Finish") {
             multiplyScore();
+            loadNext();
         }
     }
 
     void multiplyScore() {
         score = score + (int)(time * 10);
+    }
+
+    void loadNext() {
+        int nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextLevel < SceneManager.sceneCountInBuildSettings) {
+            SceneManager.LoadScene(nextLevel);
+        }
+        else {
+            //load you win scene and start credits!
+            Debug.Log("You won!!");
+        }
+
     }
 }

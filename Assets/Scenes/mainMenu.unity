@@ -1284,9 +1284,9 @@ MonoBehaviour:
   m_Text: "How to Play:\n\n- Movement:\n     - Press left and right arrow \n        keys
     to move\n     - Press space bar to jump\n\n- Winning:\n     - Reach the vehicle
     at the\n        far side of the platform to \n        be awarded extra points
-    and\n        move on to the next level!\n\n - Note:\n     - You have 3 lives total\n
-    \    - Raptors will cause you to\n        to lose a life if you are bit!\n     -
-    Falling off the platform is\n        immediate Game Over\n   "
+    and\n        move on to the next level!\n\n - Note:\n     - You have 1 life total\n
+    \    - Being bit by raptors and \n        falling off the platform is \n        Game
+    Over"
 --- !u!222 &1582168240
 CanvasRenderer:
   m_ObjectHideFlags: 0

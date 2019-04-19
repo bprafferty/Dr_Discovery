@@ -5,7 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class playerScore : MonoBehaviour {
+    
     public int score = 0;
+
     public float time = 120.0f;
 
     public GameObject scoreCanvas;

@@ -44,8 +44,7 @@ public class playerScore : MonoBehaviour {
             SceneManager.LoadScene(nextLevel);
         }
         else {
-            //load you win scene and start credits!
-            Debug.Log("You won!!");
+            SceneManager.LoadScene(nextLevel);
         }
 
     }

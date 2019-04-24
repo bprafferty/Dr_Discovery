@@ -42,12 +42,6 @@ public class playerScore : MonoBehaviour {
 
     void loadNext() {
         int nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
-        if (nextLevel < SceneManager.sceneCountInBuildSettings) {
-            SceneManager.LoadScene(nextLevel);
-        }
-        else {
-            SceneManager.LoadScene(nextLevel);
-        }
-
+        SceneManager.LoadScene(nextLevel);
     }
 }

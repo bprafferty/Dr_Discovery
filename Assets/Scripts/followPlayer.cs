@@ -16,8 +16,8 @@ public class followPlayer : MonoBehaviour {
 
     // Update is called once per frame
     void LateUpdate() {
-        float x = Mathf.Clamp(player.transform.position.x, minX, maxX);
-        float y = Mathf.Clamp(player.transform.position.y, minY, maxY);
-        gameObject.transform.position = new Vector3(x, y, gameObject.transform.position.z);
+        float currentX = Mathf.Clamp(player.transform.position.x, minX, maxX);
+        float currentY = Mathf.Clamp(player.transform.position.y, minY, maxY);
+        gameObject.transform.position = new Vector3(currentX, currentY, gameObject.transform.position.z);
     }
 }

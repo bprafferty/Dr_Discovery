@@ -16,6 +16,7 @@ How to Play:
 
  - Note:
      - You have 1 life total
-     - Being bit by raptors and 
-        falling off the platform is 
-        Game Over
+     - Being bit by raptors and/or 
+        falling off the platform 
+        will send you back to the
+        start of the level.

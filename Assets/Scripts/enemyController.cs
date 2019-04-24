@@ -16,23 +16,23 @@ public class enemyController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(moveX, 0));
+        RaycastHit2D collisionDetection = Physics2D.Raycast(transform.position, new Vector2(moveX, 0));
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX, 0) * movementSpeed;
 
-        if (hit.distance < 0.9f && moveX < 0)
+        if (collisionDetection.distance < 0.9f && moveX < 0)
         {
             moveX = 1;
             GetComponent<SpriteRenderer>().flipX = true;
-            if (hit.collider.tag == "Player")
+            if (collisionDetection.collider.tag == "Player")
             {
                 damage();
             }
         }
-        else if (hit.distance < 0.9f && moveX > 0)
+        else if (collisionDetection.distance < 0.9f && moveX > 0)
         {
             moveX = -1;
             GetComponent<SpriteRenderer>().flipX = false;
-            if (hit.collider.tag == "Player")
+            if (collisionDetection.collider.tag == "Player")
             {
                 damage();
             }

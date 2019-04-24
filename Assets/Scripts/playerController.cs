@@ -7,7 +7,7 @@ public class playerController : MonoBehaviour {
     public int movementSpeed = 10;
     private float moveX;
     public int jumpPower = 1100;
-    public bool isGrounded;
+    public bool onFloor;
     public float distanceToPlayerFeet = 0.55f;
 
 
@@ -20,7 +20,7 @@ public class playerController : MonoBehaviour {
     void Update() {
         movePlayer();
         rayCast();
-        if (gameObject.transform.position.y < -7) {
+        if (gameObject.transform.position.y < -10) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
@@ -28,7 +28,7 @@ public class playerController : MonoBehaviour {
     void movePlayer() {
 
         //controls
-        if (Input.GetButtonDown("Jump") && isGrounded == true) {
+        if (Input.GetButtonDown("Jump") && onFloor == true) {
             jumpPlayer();
         }
         moveX = Input.GetAxis("Horizontal");
@@ -47,21 +47,22 @@ public class playerController : MonoBehaviour {
 
     void jumpPlayer() {
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpPower);
-        isGrounded = false;
+        onFloor = false;
     }
 
     void rayCast() {
-        RaycastHit2D downward = Physics2D.Raycast(transform.position, Vector2.down);
-        if (downward != null && downward.collider != null && downward.distance < distanceToPlayerFeet && downward.collider.tag != "Enemy") {
-            isGrounded = true;
+        RaycastHit2D downwardCollisionDetection = Physics2D.Raycast(transform.position, Vector2.down);
+        //check for being on the ground
+        if (downwardCollisionDetection != null && downwardCollisionDetection.collider != null && downwardCollisionDetection.distance < distanceToPlayerFeet && downwardCollisionDetection.collider.tag != "Enemy") {
+            onFloor = true;
         }
-        if (downward != null && downward.collider != null && downward.distance < distanceToPlayerFeet && downward.collider.tag == "Enemy") {
-            GetComponent<Rigidbody2D>().AddForce(Vector2.up * 1000);
-            downward.collider.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 200);
-            downward.collider.gameObject.GetComponent<Rigidbody2D>().gravityScale = 15;
-            downward.collider.gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
-            downward.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            downward.collider.gameObject.GetComponent<enemyController>().enabled = false;
+        //jump on top of enemy, make the enemy fall through the floor
+        if (downwardCollisionDetection != null && downwardCollisionDetection.collider != null && downwardCollisionDetection.distance < distanceToPlayerFeet && downwardCollisionDetection.collider.tag == "Enemy") {
+            GetComponent<Rigidbody2D>().AddForce(Vector2.up * 1500);
+            downwardCollisionDetection.collider.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 400);
+            downwardCollisionDetection.collider.gameObject.GetComponent<Rigidbody2D>().gravityScale = 30;
+            downwardCollisionDetection.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            downwardCollisionDetection.collider.gameObject.GetComponent<enemyController>().enabled = false;
             GetComponent<playerScore>().score += 100;
         }
 

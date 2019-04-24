@@ -182,8 +182,22 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You Won!!\n\n\nCredits:\n\nGame Designer  --  Brian Rafferty\n\n\nSpecial
-    Thanks to:\n\n2D Side Scroller Tutorial creator -- \nLets Make A Game Together"
+  m_Text: 'You Won!!
+
+
+
+    Game Designer  --  Brian Rafferty
+
+
+    Music:
+
+    Cream on Chrome -- Ratatat
+
+    Goodbye Isaac -- Questlove
+
+    Ghostwriter -- Rjd2
+
+    Duke of Earl -- Gene Chandler'
 --- !u!222 &416798399
 CanvasRenderer:
   m_ObjectHideFlags: 0

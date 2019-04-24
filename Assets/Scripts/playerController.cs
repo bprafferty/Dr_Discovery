@@ -33,8 +33,6 @@ public class playerController : MonoBehaviour {
         }
         moveX = Input.GetAxis("Horizontal");
 
-        //animations
-
         //player direction
         if (moveX < 0.0f){
             GetComponent<SpriteRenderer>().flipX = true;

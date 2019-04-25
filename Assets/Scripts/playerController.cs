@@ -4,15 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour {
+    public static playerController playerMethod;
     public int movementSpeed = 10;
     private float moveX;
     public int jumpPower = 1100;
     public bool onFloor;
     public float distanceToPlayerFeet = 0.55f;
+    public int scoreAtStart;
 
 
     // Start is called before the first frame update
     void Start() {
+        scoreAtStart = gameManaging.gameInstance.savedScore;
         
     }
 
@@ -21,7 +24,7 @@ public class playerController : MonoBehaviour {
         movePlayer();
         rayCast();
         if (gameObject.transform.position.y < -10) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            death();
         }
     }
 
@@ -51,6 +54,18 @@ public class playerController : MonoBehaviour {
     }
 
     void rayCast() {
+        RaycastHit2D collisionHorizontal = Physics2D.Raycast(transform.position, new Vector2(moveX, 0));
+        if (collisionHorizontal.distance < 0.35f && moveX > 0) {
+            if (collisionHorizontal.collider.tag == "Enemy") {
+                death();
+            }
+        }
+        if (collisionHorizontal.distance < 0.35f && moveX < 0) {
+            if (collisionHorizontal.collider.tag == "Enemy") {
+                death();
+            }
+        }
+
         RaycastHit2D downwardCollisionDetection = Physics2D.Raycast(transform.position, Vector2.down);
         //check for being on the ground
         if (downwardCollisionDetection != null && downwardCollisionDetection.collider != null && downwardCollisionDetection.distance < distanceToPlayerFeet && downwardCollisionDetection.collider.tag != "Enemy") {
@@ -63,9 +78,15 @@ public class playerController : MonoBehaviour {
             downwardCollisionDetection.collider.gameObject.GetComponent<Rigidbody2D>().gravityScale = 30;
             downwardCollisionDetection.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             downwardCollisionDetection.collider.gameObject.GetComponent<enemyController>().enabled = false;
-            GetComponent<playerScore>().score += 100;
+
+            gameManaging.gameInstance.savedScore += 100;
         }
 
 
+    }
+
+    public void death(){
+        gameManaging.gameInstance.savedScore = scoreAtStart;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

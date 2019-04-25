@@ -572,7 +572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27aa38646d5d543c1b5ee2b89f93b603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   time: 120
   scoreCanvas: {fileID: 1647590285}
   timeCanvas: {fileID: 777051947}

@@ -5,8 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class playerScore : MonoBehaviour {
-    
-    public int score = 0;
+
+    //public int score = gameManaging.gameInstance.savedScore;
+
 
     public float time = 120.0f;
 
@@ -20,7 +21,8 @@ public class playerScore : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        scoreCanvas.gameObject.GetComponent<Text>().text = ("Score: " + score);
+        
+        scoreCanvas.gameObject.GetComponent<Text>().text = ("Score: " + gameManaging.gameInstance.savedScore);
         time -= Time.deltaTime;
         timeCanvas.gameObject.GetComponent<Text>().text = ("Time: " + (int)time);
 
@@ -37,10 +39,11 @@ public class playerScore : MonoBehaviour {
     }
 
     void multiplyScore() {
-        score = score + (int)(time * 10);
+        gameManaging.gameInstance.savedScore += (int)(time * 10);
     }
 
     void loadNext() {
+        //gameManaging.gameInstance.savedScore = score;
         int nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadScene(nextLevel);
     }

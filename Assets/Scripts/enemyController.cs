@@ -23,29 +23,23 @@ public class enemyController : MonoBehaviour {
         {
             moveX = 1;
             GetComponent<SpriteRenderer>().flipX = true;
-            if (collisionDetection.collider.tag == "Player")
-            {
-                damage();
-            }
+
         }
         else if (collisionDetection.distance < 0.9f && moveX > 0)
         {
             moveX = -1;
             GetComponent<SpriteRenderer>().flipX = false;
-            if (collisionDetection.collider.tag == "Player")
-            {
-                damage();
-            }
+
         }
 
     }
 
-    void damage() {
+    /*void damage() {
         lives -= 1;
         if (lives == 0) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-    }
+    }*/
 
 }

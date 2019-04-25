@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{E9E2C957-7D36-C438-2E15-9F46F8C32657}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/playerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/playerScore.cs">
     <Files>
-      <File FileName="Assets/Scripts/enemyController.cs" Line="8" Column="26" />
-      <File FileName="Assets/Scripts/playerController.cs" Line="67" Column="54" />
-      <File FileName="Assets/Scripts/playerScore.cs" Line="22" Column="20" />
+      <File FileName="Assets/Scripts/enemyController.cs" Line="46" Column="72" />
+      <File FileName="Assets/Scripts/playerController.cs" Line="66" Column="13" />
+      <File FileName="Assets/Scripts/playerScore.cs" Line="9" Column="7" />
       <File FileName="Assets/Scripts/exitGame.cs" Line="6" Column="21" />
       <File FileName="Assets/Scripts/loadScene.cs" Line="11" Column="1" />
       <File FileName="Assets/Scripts/loadMainMenu.cs" Line="10" Column="41" />
+      <File FileName="Assets/Scripts/gameManaging.cs" Line="11" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
